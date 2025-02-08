@@ -14,18 +14,16 @@ const modalTitle = document.getElementById("modalTitle");
 const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
 
-// Open the modal
 openModalBtn.addEventListener("click", () => {
     modal.style.display = "flex"; 
-    modalTitle.innerText = "Login"; 
-    loginForm.style.display = "block"; 
-    signupForm.style.display = "none"; 
+    setTimeout(() => modal.classList.add("show"), 10); // Delay to trigger animation
 });
 
-// Close the modal when close button is clicked
 closeModalBtn.addEventListener("click", () => {
-    modal.style.display = "none"; 
+    modal.classList.remove("show");
+    setTimeout(() => modal.style.display = "none", 400); // Wait for animation to end
 });
+
 
 // Switch to the Login form
 loginBtn.addEventListener("click", () => {
@@ -40,3 +38,4 @@ signupBtn.addEventListener("click", () => {
     loginForm.style.display = "none"; 
     modalTitle.innerText = "Signup";
 });
+
