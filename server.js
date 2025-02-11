@@ -16,7 +16,7 @@ app.use('/api', userRoutes); // Mount user-related routes under /api
 app.use(express.static(path.join(__dirname, './src/public')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './src/public', 'index.html'));
+  res.sendFile(path.join(__dirname, './src/public', 'login.html'));
 });
 
 // Start the server

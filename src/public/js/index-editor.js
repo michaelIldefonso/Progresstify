@@ -1,41 +1,39 @@
-// Get modal and button elements
-const modal = document.getElementById("authModal");
-const openModalBtn = document.getElementById("openModalBtn");
-const closeModalBtn = document.querySelector(".close-btn");
+document.addEventListener("DOMContentLoaded", function () {
+    const openModalBtn = document.getElementById("openModalBtn");
+    const modal = document.getElementById("authModal");
+    const closeModalBtn = document.querySelector(".close-btn");
+    const authContainer = document.getElementById("authContainer");
 
-// Get the buttons to switch between Login and Signup
-const loginBtn = document.getElementById("loginBtn");
-const signupBtn = document.getElementById("signupBtn");
+    function loadAuthPage(page) {
+        fetch(page)
+            .then(response => response.text())
+            .then(data => {
+                authContainer.innerHTML = data;
+                modal.style.display = "block";
+            })
+            .catch(error => console.error("Error loading page:", error));
+    }
 
-// Get the modal header title
-const modalTitle = document.getElementById("modalTitle");
+    openModalBtn.addEventListener("click", function () {
+        loadAuthPage("login.html"); // Initially load login page
+    });
 
-// Get the form sections
-const loginForm = document.getElementById("loginForm");
-const signupForm = document.getElementById("signupForm");
+    closeModalBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
 
-openModalBtn.addEventListener("click", () => {
-    modal.style.display = "flex"; 
-    setTimeout(() => modal.classList.add("show"), 10); // Delay to trigger animation
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // Event delegation for switching login/signup
+    authContainer.addEventListener("click", function (event) {
+        if (event.target.id === "signupBtn") {
+            loadAuthPage("signup.html");
+        } else if (event.target.id === "loginBtn") {
+            loadAuthPage("login.html");
+        }
+    });
 });
-
-closeModalBtn.addEventListener("click", () => {
-    modal.classList.remove("show");
-    setTimeout(() => modal.style.display = "none", 400); // Wait for animation to end
-});
-
-
-// Switch to the Login form
-loginBtn.addEventListener("click", () => {
-    loginForm.style.display = "block"; 
-    signupForm.style.display = "none"; 
-    modalTitle.innerText = "Login"; 
-});
-
-// Switch to the Signup form
-signupBtn.addEventListener("click", () => {
-    signupForm.style.display = "block"; 
-    loginForm.style.display = "none"; 
-    modalTitle.innerText = "Signup";
-});
-
