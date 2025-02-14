@@ -8,7 +8,7 @@ console.log("Callback URL:", process.env.GOOGLE_CALLBACK_URL);
 
 
 passport.use(new GoogleStrategy({
-    ClientID: process.env.GOOGLE_CLIENT_ID,
+    clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
