@@ -1,12 +1,16 @@
+require('dotenv').config();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const pool = require('./db');
+console.log("Client ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("Client Secret:", process.env.GOOGLE_CLIENT_SECRET);
+console.log("Callback URL:", process.env.GOOGLE_CALLBACK_URL);
 
-require('dotenv').config();
+
 passport.use(new GoogleStrategy({
     ClientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: '/auth/google/callback'
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         const { email, name } = profile._json;

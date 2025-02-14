@@ -24,20 +24,44 @@
 //   console.log(`Server running on http://localhost:${port}`);
 // });
 
+//=============================================
+// const express = require('express');
+// const pool = require('./config/db');
+// const path = require('path');
 
+// const app = express();
+// const PORT = 5000;
+
+// app.use(express.static(path.join(__dirname, './src/public')));
+
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, './src/public', 'login.html'));
+// });
+
+// app.listen(PORT, () => {
+//     console.log(`Server running on http://localhost:${PORT}`);
+// });
+
+
+//==============================\
 const express = require('express');
-const pool = require('./config/db');
-const path = require('path');
+const session = require('express-session');
+const passport = require('./src/config/auth');
+const authRoutes = require('./src/routes/authRoutes');
+const userRoutes = require('./src/routes/userRoutes');
 
 const app = express();
-const PORT = 5000;
+require('dotenv').config();
 
-app.use(express.static(path.join(__dirname, './src/public')));
+// Middleware
+app.use(express.json());
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './src/public', 'login.html'));
-});
+// Routes
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

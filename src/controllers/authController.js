@@ -6,5 +6,13 @@ const authController = {
     googleCallback: passport.authenticate('google', {
         failureRedirect: '/login',
         successRedirect: '/dashboard'
-    })
-}
+    }),
+    logout: (req, res) => {
+        req.logout(() => {
+            res.redirect('/');
+        });
+    }
+};
+
+module.exports = authController;
+    
