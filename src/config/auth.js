@@ -14,6 +14,7 @@ passport.use(new GoogleStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         const { email, name } = profile._json;
+        const oauthProvider = 'google';  // Store provider dynamically
 
         // Check if user exists
         const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
@@ -24,8 +25,8 @@ passport.use(new GoogleStrategy({
         } else {
             // Insert new user into database
             const insert = await pool.query(
-                'INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *',
-                [name, email]
+                'INSERT INTO users (name, email, oauth_provider, oauth_id) VALUES ($1, $2, $3, $4) RETURNING *',
+                [name, email, oauthProvider, profile.id] // Pass profile.id as oauth_id
             );
             user = insert.rows[0];
         }
