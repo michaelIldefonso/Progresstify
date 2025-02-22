@@ -12,9 +12,10 @@ router.get('/google',
 router.get('/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     (req, res) => {
-        res.sendFile(path.join(__dirname, '../public/home.html')); // Serve home.html after login
+        res.redirect("http://localhost:8000/home.html"); // ✅ Redirect to frontend after login
     }
 );
+
 
 
 module.exports = router;

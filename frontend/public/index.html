@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8bits</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!--Lahaty ng content ilalagay sa loob ng div app-->
@@ -67,8 +67,10 @@
             popup.style.display = (popup.style.display === "flex") ? "none" : "flex";
         }
         function loginWithGoogle() {
-            window.location.href = "/auth/google";
+            window.location.href = "http://localhost:5000/auth/google"; // ✅ Works when frontend & backend are separate
         }
+
+
     </script>
 </body>
 </html>
