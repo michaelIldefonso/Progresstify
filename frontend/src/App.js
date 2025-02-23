@@ -144,7 +144,7 @@ function App() {
         </nav>
       </div>
 
-      {/* Dynamic View Rendering */}
+      {/* Dynamic View Rendering DITO MAG DADAGDAG DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLDDDDDDDDDDDSSSSSSSSSSSSSSSSSSSSSSSSS*/}  
       {view === "home" && <HomePage />}
       {view === "marketing" && <MarketingWorkspace />}
 
