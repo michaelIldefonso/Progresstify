@@ -4,73 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8bits</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/styles.css"> <!-- Keep global styles -->
 </head>
 <body>
-    <!--Lahaty ng content ilalagay sa loob ng div app-->
-    <div class="App">
-        <nav class="navbar">
-            <div class="logo">
-                <img src="./img/final_logo.png" alt="Logo" />
-            </div>
-            <ul>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Solutions</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Plans</a></li>
-            </ul>
-            <div class="login">
-                <button class="btn" onclick="togglePopup()">Login</button>
-            </div>
-        </nav>
-    </div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- React will inject the app here -->
+    <div id="root"></div>
 
-    <div class="content1">
-        <div class="words1">
-            <h1>Speed up your progress by working in efficient way</h1>
-            <p>See your projects from every angle with Board, Timeline, Table, Calendar, Dashboard, Map and Workspace views that will bring a fresh perspective to the task at hand.</p>
-        </div>
-    </div>
-
-    <div class="content2">
-        <div class="words1">
-            <h1>Speed up your progress by working in efficient way</h1>
-            <p>See your projects from every angle with Board, Timeline, Table, Calendar, Dashboard, Map and Workspace views that will bring a fresh perspective to the task at hand.</p>
-        </div>
-    </div>
-
-
-    <!-- Code I added -->
-    <!-- Pop-up Login Form -->
-    <div class="popup" id="loginPopup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="togglePopup()">&times;</span>
-            <h2>Login</h2>
-            <input type="email" placeholder="Enter your email" />
-            <input type="password" placeholder="Enter your password" />
-            <label>
-                <input type="checkbox" /> Remember me
-            </label>
-            <div class="action-buttons">
-                <button class="btn blue">Log in</button>
-                <button class="btn green">Sign Up</button>
-            </div>
-            <p>Or Continue With:</p>
-            <button class="social-btn google" onclick="loginWithGoogle()">Google</button>
-            <button class="social-btn facebook">Facebook</button>
-        </div>
-    </div>
-
-    <script>
-        function togglePopup() {
-            var popup = document.getElementById("loginPopup");
-            popup.style.display = (popup.style.display === "flex") ? "none" : "flex";
-        }
-        function loginWithGoogle() {
-            window.location.href = "http://localhost:5000/auth/google"; // ✅ Works when frontend & backend are separate
-        }
-
-
-    </script>
 </body>
 </html>
