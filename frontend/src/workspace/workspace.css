@@ -35,6 +35,7 @@ body {
     padding: 8px 20px;
 }
 
+
 .sub-navbar button {
     background-color: #555;
     color: white;
@@ -124,3 +125,5 @@ body {
 .trash-can.drag-over {
     background-color: #d11a2a;
 }
+
+

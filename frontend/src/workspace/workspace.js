@@ -62,7 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Drag & Drop Logic
     function dragStart(e) {
         draggedCard = this;
-        setTimeout(() => this.style.display = 'none', 0);
+        this.classList.add('dragging');
+        setTimeout(() => (this.style.display = 'none'), 0);
+    }
+    
+    function dragEnd() {
+        this.classList.remove('dragging');
+        this.style.display = 'block';
     }
 
     function dragOver(e) {
@@ -74,12 +80,33 @@ document.addEventListener('DOMContentLoaded', () => {
         this.classList.remove('drag-over');
     }
 
-    function drop() {
+    function drop(e) {
+        e.preventDefault();
         this.classList.remove('drag-over');
-        this.appendChild(draggedCard);
+    
+        const addCardButton = this.querySelector('.add-card');
+        const afterElement = getDragAfterElement(this, e.clientY);
+    
+        if (afterElement == null) {
+            this.insertBefore(draggedCard, addCardButton); // Always keep "+ Add Card" at the bottom
+        } else {
+            this.insertBefore(draggedCard, afterElement);
+        }
+    
         draggedCard.style.display = 'block';
         draggedCard = null;
     }
+
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('.kanban-card:not(.dragging)')];
+    
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            return offset < 0 && offset > closest.offset ? { offset, element: child } : closest;
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+    
 
     // Trash Can Logic
     trashCan.addEventListener('dragover', (e) => {
