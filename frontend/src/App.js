@@ -45,12 +45,27 @@ function useTeamMembers() {
 }
 //DITO LALAGAY HOMEPAGE DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLDDDDDDDDDDDDDDDDDDDDDSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 function HomePage() {
-    return (
-      <div>
-        <h2>Welcome to the Dashboard</h2>
-        <p>This is your main content for the home view.</p>
+  return (
+    <div>
+      <div className="content1">
+        <div className="words1">
+          <h1>Speed up your progress by working in efficient way</h1>
+          <p>
+            See your projects from every angle with Board, Timeline, Table, Calendar, Dashboard, Map and Workspace views that will bring a fresh perspective to the task at hand.
+          </p>
+        </div>
       </div>
-    );
+
+      <div className="content2">
+        <div className="words1">
+          <h1>Speed up your progress by working in efficient way</h1>
+          <p>
+            See your projects from every angle with Board, Timeline, Table, Calendar, Dashboard, Map and Workspace views that will bring a fresh perspective to the task at hand.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
   }
 // ✨ Workspace Component
 function Workspace() {
