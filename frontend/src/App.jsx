@@ -98,7 +98,7 @@ function App() {
         <h1>{error ? error : data}</h1>
         <nav className={`navbar ${scrolling ? "scrolled" : ""}`}>
           <div className="logo">
-            <img src="/img/final_logo.png" alt="Logo" />
+            <img src="/public/final_logo.png" alt="Logo" />
           </div>
           <ul>
             <li><Link to="/">Home</Link></li>
