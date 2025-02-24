@@ -25,8 +25,8 @@ function useTasks() {
 
 function useTeamMembers() {
   const [members, setMembers] = useState([
-    { name: "Alice", role: "Writer" },
-    { name: "Bob", role: "Designer" },
+    { name: "Johanz Abhie", role: "Writer" },
+    { name: "Marc Franco", role: "Designer" },
   ]);
   const [newMember, setNewMember] = useState("");
 
@@ -52,49 +52,75 @@ function HomePage() {
       </div>
     );
   }
-// ✨ Marketing Workspace Component
-function MarketingWorkspace() {
+// ✨ Workspace Component
+function Workspace() {
   const { tasks, removeTask } = useTasks();
   const { members, newMember, setNewMember, addMember, removeMember } = useTeamMembers();
+  const [showTasks, setShowTasks] = useState(true);
+  const [showTeam, setShowTeam] = useState(true);
 
   return (
-    <div className="workspace">
-      <h2>📢 Marketing Workspace</h2>
-      <div className="tasks">
-        <h3>📌 Tasks</h3>
-        {Object.keys(tasks).map((category) => (
-          <div key={category}>
-            <h4>{category}</h4>
-            <ul>
-              {tasks[category].map((task, index) => (
-                <li key={index}>
-                  {task} <button onClick={() => removeTask(category, index)}>❌</button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+    <div className="Workspace">
+      <div className="sidebarWorkspace p-4 w-64 bg-gray-800 text-white h-full flex flex-col">
+        <h2 className="text-lg font-bold">📢 Workspace</h2>
 
-      <div className="team">
-        <h3>👥 Team Members</h3>
-        <ul>
-          {members.map((member, index) => (
-            <li key={index}>
-              {member.name} ({member.role})
-              <button onClick={() => removeMember(member.name)}>❌</button>
-            </li>
-          ))}
-        </ul>
-        <input
-          type="text"
-          placeholder="Add new member"
-          value={newMember}
-          onChange={(e) => setNewMember(e.target.value)}
-        />
-        <button onClick={addMember}>➕ Add</button>
+        <div className="tasks mt-4">
+          <button className="w-full text-left font-semibold" onClick={() => setShowTasks(!showTasks)}>
+            📌 Tasks {showTasks ? "▼" : "▶"}
+          </button>
+          {showTasks && (
+            <div className="pl-2 mt-2">
+              {Object.keys(tasks).map((category) => (
+                <div key={category} className="mb-2">
+                  <h4 className="font-semibold">{category}</h4>
+                  <ul className="ml-2">
+                    {tasks[category].map((task, index) => (
+                      <li key={index} className="flex justify-between items-center">
+                        {task}
+                        <button className="text-red-500" onClick={() => removeTask(category, index)}>❌</button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="team mt-4">
+          <button className="w-full text-left font-semibold" onClick={() => setShowTeam(!showTeam)}>
+            👥 Team Members {showTeam ? "▼" : "▶"}
+          </button>
+          {showTeam && (
+            <div className="pl-2 mt-2">
+              <ul>
+                {members.map((member, index) => (
+                  <li key={index} className="flex justify-between items-center">
+                    {member.name} ({member.role})
+                    <button className="text-red-500" onClick={() => removeMember(member.name)}>❌</button>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-2 flex gap-2">
+                <input
+                  type="text"
+                  placeholder="Add new member"
+                  value={newMember}
+                  onChange={(e) => setNewMember(e.target.value)}
+                  className="p-1 text-black w-full rounded"
+                />
+                <button className="bg-green-500 px-2 py-1 rounded" onClick={addMember}>➕</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      
+      <div className="WorkspaceContent">
+        {/* Main workspace content goes here */}
       </div>
     </div>
+  
   );
 }
 
@@ -134,7 +160,7 @@ function App() {
           </div>
           <ul>
             <li><a href="#" onClick={() => setView("home")}>Home</a></li>
-            <li><a href="#" onClick={() => setView("marketing")}>Marketing Workspace</a></li>
+            <li><a href="#" onClick={() => setView("workspace")}>Workspace</a></li>
             <li><a href="#">Pricing</a></li>
             <li><a href="#">Plans</a></li>
           </ul>
@@ -144,9 +170,9 @@ function App() {
         </nav>
       </div>
 
-      {/* Dynamic View Rendering DITO MAG DADAGDAG DEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLDDDDDDDDDDDSSSSSSSSSSSSSSSSSSSSSSSSS*/}  
+      {/* Dynamic View Rendering */}
       {view === "home" && <HomePage />}
-      {view === "marketing" && <MarketingWorkspace />}
+      {view === "workspace" && <Workspace />}
 
       <div className="popup" id="loginPopup">
         <div className="popup-content">
