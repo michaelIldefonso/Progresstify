@@ -25,8 +25,8 @@ function useTasks() {
 
 function useTeamMembers() {
   const [members, setMembers] = useState([
-    { name: "Alice", role: "Writer" },
-    { name: "Bob", role: "Designer" },
+    { name: "Johanz Abhie", role: "Writer" },
+    { name: "Marc Franco", role: "Designer" },
   ]);
   const [newMember, setNewMember] = useState("");
 
@@ -160,7 +160,7 @@ function App() {
           </div>
           <ul>
             <li><a href="#" onClick={() => setView("home")}>Home</a></li>
-            <li><a href="#" onClick={() => setView("marketing")}>Marketing Workspace</a></li>
+            <li><a href="#" onClick={() => setView("workspace")}>Workspace</a></li>
             <li><a href="#">Pricing</a></li>
             <li><a href="#">Plans</a></li>
           </ul>
@@ -172,7 +172,7 @@ function App() {
 
       {/* Dynamic View Rendering */}
       {view === "home" && <HomePage />}
-      {view === "marketing" && <Workspace />}
+      {view === "workspace" && <Workspace />}
 
       <div className="popup" id="loginPopup">
         <div className="popup-content">
