@@ -157,7 +157,7 @@ body {
 /*the style I added*/
 /* Popup Styles */
 .popup {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;

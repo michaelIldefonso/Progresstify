@@ -20,11 +20,12 @@ app.use(passport.session());
 
 app.use(cors()); // Allow frontend requests
 
+
 app.get("/api/data", (req, res) => {
   res.json({ message: "Hello from Backend!" });
 });
 
-app.listen(9000, () => console.log("Backend running on port 8000"));
+app.listen(5173, () => console.log("Backend running on port 8000"));
 
 // Routes
 app.use('/auth', authRoutes);
