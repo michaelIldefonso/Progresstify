@@ -4,7 +4,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    background-image: url("workspace.png");
+    background-image: url("/frontend/public/workspace.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 /* Navbar */
@@ -53,7 +58,7 @@ body {
 
 /* Project Board */
 .project-board {
-    display: inline-flex;
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
@@ -124,3 +129,4 @@ body {
 .trash-can.drag-over {
     background-color: #d11a2a;
 }
+
