@@ -30,12 +30,47 @@ function HomePage() {
 
 // 🛠️ Workspace Component
 function Workspace() {
-  return (
-    <div className="Workspace">
-      <h2>📢 Workspace</h2>
-      {/* Add your workspace content here */}
-    </div>
-  );
+  function App() {
+    useEffect(() => {
+      const script = document.createElement("script");
+      script.src = "/workspace.js"; // Load your JavaScript file
+      script.async = true;
+      document.body.appendChild(script);
+  
+      return () => {
+        document.body.removeChild(script); // Cleanup when the component unmounts
+      };
+    }, []);
+  
+    return (
+      <div>
+        {/* Navbar */}
+        <div className="navbar">
+          <div className="menu">☰</div>
+          <div className="nav-options">
+            <span>Home</span>
+            <span>Settings</span>
+          </div>
+          <div className="user-controls">
+            <span>Profile</span>
+            <span>Logout</span>
+          </div>
+        </div>
+  
+        {/* Sub Navbar */}
+        <div className="sub-navbar">
+          <button id="add-column">Add Column</button>
+          <button className="share-btn">Share</button>
+        </div>
+  
+        {/* Project Board */}
+        <div className="project-board" id="project-board"></div>
+  
+        {/* Trash Can */}
+        <div className="trash-can" id="trash-can">🗑 Delete</div>
+      </div>
+    );
+  }
 }
 
 // 🔑 Login Popup Component

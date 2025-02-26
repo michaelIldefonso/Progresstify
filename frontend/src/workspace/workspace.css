@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    background-image: url("workspace.png");
 }
 
 /* Navbar */
@@ -35,7 +36,6 @@ body {
     padding: 8px 20px;
 }
 
-
 .sub-navbar button {
     background-color: #555;
     color: white;
@@ -51,40 +51,39 @@ body {
     background-color: #4CAF50;
 }
 
-/* Kanban Board */
-.kanban-board {
+/* Project Board */
+.project-board {
     display: inline-flex;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    overflow-x: auto;
     padding: 20px;
     width: 100%;
 }
 
-/* Kanban Column */
-.kanban-column {
+/* Project Column */
+.project-column {
     background-color: #e0e0e0;
     border-radius: 8px;
-    width: 20%; /* Increased width */
-    padding: 20px; /* More space inside */
+    width: 20%;
+    padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 0 10px;
-    min-height: 300px; /* Ensure taller boxes */
+    min-height: 300px;
 }
 
-.kanban-column .column-title {
+.project-column .column-title {
     text-align: center;
     font-weight: bold;
     cursor: pointer;
     background-color: transparent;
     border: none;
     width: 100%;
-    text-align: center;
     font-size: 18px;
 }
 
-.kanban-card {
+.project-card {
     background-color: #fff;
     border-radius: 4px;
     padding: 10px;
@@ -93,7 +92,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.kanban-card:active {
+.project-card:active {
     cursor: grabbing;
 }
 
@@ -125,5 +124,3 @@ body {
 .trash-can.drag-over {
     background-color: #d11a2a;
 }
-
-
