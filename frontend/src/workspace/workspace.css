@@ -4,7 +4,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    background-image: url("workspace.png");
+    background-image: url("/frontend/public/workspace.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 /* Navbar */
@@ -52,13 +57,7 @@ body {
 }
 
 /* Project Board */
-.project-board {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 50px; /* Space between columns */
-    padding: 40px; /* Adds spacing around the board */
-    justify-content: center;
-}
+
 
 .project-column {
     background-color: #e0e0e0;
